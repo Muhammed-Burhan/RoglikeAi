@@ -1,0 +1,145 @@
+.game-board-container {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border-radius: 15px;
+  padding: 20px;
+  border: 3px solid #533483;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.game-board {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1;
+  background: #1a1a2e;
+  border: 2px solid #16213e;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: auto;
+  max-height: 600px;
+}
+
+.board-row {
+  display: flex;
+  white-space: nowrap;
+}
+
+.cell {
+  width: 16px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Floor and Wall styles */
+.cell.floor {
+  color: #95a5a6;
+  background: #2c3e50;
+}
+
+.cell.wall {
+  color: #7f8c8d;
+  background: #34495e;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Player styles */
+.cell.player {
+  color: #f1c40f;
+  background: radial-gradient(circle, rgba(241, 196, 15, 0.3), transparent);
+  animation: playerGlow 2s ease-in-out infinite alternate;
+  font-size: 16px;
+}
+
+@keyframes playerGlow {
+  from { text-shadow: 0 0 5px #f39c12, 1px 1px 2px rgba(0, 0, 0, 0.8); }
+  to { text-shadow: 0 0 10px #f39c12, 0 0 15px #f39c12, 1px 1px 2px rgba(0, 0, 0, 0.8); }
+}
+
+/* Enemy styles */
+.cell.enemy {
+  font-weight: bold;
+  animation: enemyPulse 3s ease-in-out infinite;
+}
+
+.cell.enemy.goblin {
+  color: #27ae60;
+  background: radial-gradient(circle, rgba(39, 174, 96, 0.2), transparent);
+}
+
+.cell.enemy.orc {
+  color: #e74c3c;
+  background: radial-gradient(circle, rgba(231, 76, 60, 0.2), transparent);
+}
+
+.cell.enemy.troll {
+  color: #8e44ad;
+  background: radial-gradient(circle, rgba(142, 68, 173, 0.2), transparent);
+  font-size: 16px;
+}
+
+.cell.enemy.dragon {
+  color: #c0392b;
+  background: radial-gradient(circle, rgba(192, 57, 43, 0.3), transparent);
+  font-size: 18px;
+  text-shadow: 0 0 8px #e74c3c, 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes enemyPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Item styles */
+.cell.item {
+  animation: itemShimmer 4s ease-in-out infinite;
+}
+
+.cell.item.potion {
+  color: #e91e63;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.2), transparent);
+}
+
+.cell.item.gold {
+  color: #f1c40f;
+  background: radial-gradient(circle, rgba(241, 196, 15, 0.2), transparent);
+}
+
+.cell.item.weapon {
+  color: #95a5a6;
+  background: radial-gradient(circle, rgba(149, 165, 166, 0.2), transparent);
+}
+
+.cell.item.armor {
+  color: #3498db;
+  background: radial-gradient(circle, rgba(52, 152, 219, 0.2), transparent);
+}
+
+.cell.item.stairs {
+  color: #9b59b6;
+  background: radial-gradient(circle, rgba(155, 89, 182, 0.3), transparent);
+  font-size: 16px;
+  animation: stairsGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes itemShimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes stairsGlow {
+  from { text-shadow: 0 0 5px #9b59b6, 1px 1px 2px rgba(0, 0, 0, 0.8); }
+  to { text-shadow: 0 0 15px #9b59b6, 0 0 20px #9b59b6, 1px 1px 2px rgba(0, 0, 0, 0.8); }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #bdc3c7;
+  font-size: 1.2rem;
+} 
